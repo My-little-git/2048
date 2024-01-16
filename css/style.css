@@ -1,0 +1,84 @@
+:root{
+    --cell-size: 14vmin;
+    --grid-space: 2vmin;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #3d3d3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#game{
+    text-align: center;
+    font-family: Arial;
+}
+
+.score{
+    color: #fff;
+    font-size: 7vmin;
+    margin-bottom: 3vmin;
+}
+
+#grid{
+    position: relative;
+    display: grid;
+
+    grid-template: repeat(4, var(--cell-size)) / repeat(4, var(--cell-size));
+    gap: var(--grid-space);
+}
+
+.cell{
+    background-color: #6c6c6c;
+
+    -webkit-border-radius: 1vmin;
+    -moz-border-radius: 1vmin;
+    border-radius: 1vmin;
+}
+
+.tile{
+    --posX: 0;
+    --posY: 0;
+    --text-lightness: 0%;
+    --bg-lightness: 100%;
+
+    position: absolute;
+    top: calc(var(--posX) * (var(--cell-size) + var(--grid-space)));
+    left: calc(var(--posY) * (var(--cell-size) + var(--grid-space)));
+
+    width: var(--cell-size);
+    height: var(--cell-size);
+
+    -webkit-border-radius: 1vmin;
+    -moz-border-radius: 1vmin;
+    border-radius: 1vmin;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: hsl(25, 60%, var(--text-lightness));
+    font-size: 3vmin;
+    font-weight: bold;
+
+    background-color: hsl(25, 60%, var(--bg-lightness));
+
+    transition: .2s;
+    animation: showTile .2s;
+}
+
+@keyframes showTile {
+    0% {
+        opacity: .5;
+        transform: scale(0);
+    }
+}
